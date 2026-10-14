@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>고교 선택 가이드 — 경기 고교학점제 편제표</title>
+<meta name="description" content="경기도 고등학교 고교학점제 편제표를 희망 계열 기준으로 읽어 주는 상담 도구. 원작: 저동고 황부장">
+<meta name="theme-color" content="#1A2B45" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1623" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="img/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<link rel="preload" href="fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/app.css">
+<script>
+  // 테마는 첫 그리기 전에 적용해 깜빡임을 막는다
+  try { var t = localStorage.getItem('gg.theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="topbar">
+  <a class="brand" href="#/" aria-label="고교 선택 가이드 처음 화면">
+    <span class="seal" aria-hidden="true">黃</span>
+    <span class="brand-name">고교 선택 가이드</span>
+  </a>
+  <div class="gsearch" role="search">
+    <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+    <input id="q" type="search" placeholder="학교 · 과목 · 특징 검색" autocomplete="off" aria-label="학교, 과목, 특징 검색" aria-controls="qres" aria-expanded="false">
+    <kbd aria-hidden="true">/</kbd>
+    <div id="qres" class="qres" role="listbox" hidden></div>
+  </div>
+  <button class="lens" id="lensBtn" type="button" aria-haspopup="dialog"><span class="lens-k">계열</span> <b id="lensName">고르기</b><svg class="ic sm" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+  <a class="cand-link" id="candLink" href="#/c">후보 <b id="candN">0</b></a>
+  <button class="icon-btn" id="moreBtn" type="button" aria-label="설정과 도움말" aria-haspopup="dialog"><svg class="ic" aria-hidden="true"><use href="#i-ellipsis"/></svg></button>
+</header>
+
+<main id="main" tabindex="-1"></main>
+
+<nav class="tabbar" aria-label="주요 화면">
+  <a href="#/" data-tab="explore"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg><span>탐색</span></a>
+  <a href="#/search" data-tab="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><span>검색</span></a>
+  <a href="#/c" data-tab="cand"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg><span>후보 <b id="candN2">0</b></span></a>
+</nav>
+
+<dialog id="sheet" class="sheet-dlg" aria-labelledby="sheetTitle"></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="tip" class="maptip" hidden></div>
+
+<script src="js/icons.js"></script>
+<script src="data/core.js"></script>
+<script src="data/schools.js"></script>
+<script src="data/y27.js"></script>
+<script src="data/map.js"></script>
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
